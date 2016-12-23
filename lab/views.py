@@ -25,7 +25,7 @@ def phones_view(request):
      result = "OK!"
      if request.method == "POST" and request.POST['name']  and request.POST['manufacturer'] and request.POST['price'] and request.POST['date'] and request.POST['rate'] and request.FILES['image']:
          if request.user.is_authenticated():
-             error = False
+
              print("is_authenticated")
              form = PhoneForm(request.POST, request.FILES)
              if form.is_valid():
@@ -37,9 +37,10 @@ def phones_view(request):
                                       date=request.POST['date'],
                                       image=request.FILES['image'])
              else:
+
                  print("Invalid")
 
-         return render(request, "phones.html", {'error':error , 'result': result, 'user': request.user})
+         return render(request, "phones.html", { 'result': result, 'user': request.user})
 
      elif request.method == "GET":
          if not Phone.objects:
