@@ -1,0 +1,74 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link href="{% static '/css/bootstrap.css'%}" rel="stylesheet">
+       <script src = "{% static '/js/my_script.js' %}"></script>
+
+</head>
+<body>
+ <div class="navbar navbar-inverse">
+        <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Labka</a>
+                </div>
+            <ul class="nav navbar-nav">
+         <li><a href="/">Додати телефон</a></li>
+         <li><a href="/info/show/">Показати всі телефони</a></li>
+         <li><a href  = "/interesting/">Щось цікаве</a></li>
+         {%if user.is_superuser%}
+         <li><a href  = "/users/">Список юзерів</a></li>
+         {%endif%}
+            </ul>
+            <ul class = "signin">
+
+                 {% if username%}
+              <button class = "pull-right btn btn-default"><a href = "/auth/logout">Выйти({{username}})</a></button>
+                {% else %}
+                <button class = "pull-right  btn btn-default"><a href = "/auth/login/">Войти</a></button>
+                {% endif %}
+            </ul>
+<form class="navbar-search pull-right" action="/search/" method = "get" id="form">
+   <div class="input-group">
+    <input type="text" class="form-control" placeholder= "Search"  name = "search"  id = "search">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+    </div>
+</div>
+
+{% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+ <form name="test" method="post"  action="/info/show/"  enctype="multipart/form-data">
+  <p><b>Name</b><br>
+   <input type="text" size="40"  name = "name" id="name">
+  </p>
+  <p><b>Manufacturer:</b>
+  <input type="text" size="40"  name = "manufacturer" id = "manufacturer">
+  </p>
+    <b>Price:</b><br>
+     <h6>Введите число</h6>
+  <input type="text" size="40"  name = "price" id = "price">
+ 
+     <p><b>Rate:</b>
+  <input type="text" size="40"  name = "rate" id  ="rate">
+  </p>
+     <p><b>Date:</b>
+  <input type="text" size="40"  name = "date" id = "date">
+  </p>
+  <p><b>Image:</b>
+    <input type="file"  name = "image"  id = "image" >
+
+      <button type="submit"  value="Отправить" id = "submit-btn" disabled >Post</button>
+    </p>  
+ </form>
+ <script src = "{% static '/js/my_script.js' %}"></script>
+</body>
+</html>

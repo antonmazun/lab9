@@ -1,0 +1,60 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<link href="{% static '/css/bootstrap.min.css'%}" rel="stylesheet">
+</head>
+<body>
+ <div class="navbar navbar-inverse">
+        <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Labka</a>
+                </div>
+      <ul class="nav navbar-nav">
+         <li><a href="/">Додати телефон</a></li>
+         <li><a href="/info/show/">Показати всі телефони</a></li>
+         <li><a href  = "/interesting/">Щось цікаве</a></li>
+         {%if user.is_superuser %}
+         <li><a href  = "/users/">Список юзерів</a></li>
+         {%endif%}
+            </ul>
+            <ul class = "signin">
+                 {% if username%}
+              <button class = "pull-right btn btn-default"><a href = "/auth/logout">Выйти({{username}})</a></button>
+                {% else %}
+                <button class = "pull-right  btn btn-default"><a href = "/auth/login">Войти</a></button>
+                {% endif %}
+            </ul>
+<form class="navbar-search pull-right" action="/search/" method = "get" id="form">
+   <div class="input-group">
+    <input type="text" class="form-control" placeholder= "Search"  name = "search"  id = "search">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+        </div>
+</div>
+{%if phones%}
+ {%for i in phones%}
+  <p><a href  = "/phones_view/get/{{i.id}}">{{i.name}}</a></p>
+    <p>Виробник $:{{i.manufacturer}}</p>
+    <p>Ціна:{{i.price}}</p>
+    <p>Рейтинг :{{i.rate}}</p>
+    <p>Дата виходу {{i.date}}</p>
+ {%if i.image%}
+ <img src  = "{{i.image.url}}">
+ {%endif%}
+<form action = "/phone_delete/get/{{i.id}}/" method = "POST">
+<input class ="button" type = "submit" value = "Видалити">
+</form>
+ {%endfor%}
+    {%else%}
+ <p style = "color: red;">Телефон не знайдено !</p>
+{%endif%}
+</body>
+</html>
