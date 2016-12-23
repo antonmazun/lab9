@@ -21,3 +21,28 @@ $(document).ready(function(){
             }});
         });
     });
+
+$(document).ready(function(){
+    $(".search").click(function(){
+        btn = $(this);
+        inp = $("#search");
+        $.ajax({
+            type: "GET",
+            url : "/search/",
+            data: {search: inp.val(), xhr: true},
+            success: function(result){
+
+               result = jQuery.parseJSON(result);
+            // alert(result);
+            $(".phone_container").remove();
+                if(result.length == 0){
+                    $("#phones_container").append('<div class = "phone_container"><h1>Not Found!</h1></div>');
+                }
+                else
+            for(i in result){
+                $("#phones_container").append('<div class = "col-sm-4 phone_container" id = "phone_' + result[i].id + '"><div class = "thumbnail"><img src = "' + result[i].url + '" alt = ""  class = "img-responsive" id = "content_image"><div class = "caption"><h3>Виробник: ' + result[i].title + ' </h3><p>Ціна $: ' + result[i].price + '</p><p>Рейтинг:' + result[i].rate + '</p><a href  = "/phones_view/get/'+ result[i].id + '" class = "btn btn-success">Детальніше...</a><button class = "btn btn-info pull-right add" value = "' + result[i].id +'">Додати в кошик</button></div></div></div>');
+            };
+            readyClickFuncCart();
+        }});
+    });
+});

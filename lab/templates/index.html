@@ -34,7 +34,8 @@
    <div class="input-group">
     <input type="text" class="form-control" placeholder= "Search"  name = "search"  id = "search">
     <div class="input-group-btn">
-      <button class="btn btn-default" type="submit">
+        
+      <button class="btn btn-default search" type="submit">
         <i class="glyphicon glyphicon-search"></i>
       </button>
     </div>
@@ -42,7 +43,8 @@
 </form>
     </div>
 </div>
-
+    <div id = "phones_container">
+<div class = "phone_container">
 {% if error %}
         <p style="color: red;">{{ error }}</p>
     {% endif %}
@@ -69,6 +71,8 @@
       <button type="submit"  value="Отправить" id = "submit-btn" disabled >Post</button>
     </p>  
  </form>
+    </div>
+    </div>
  <script src = "{% static '/js/my_script.js' %}"></script>
 </body>
 </html>
