@@ -35,10 +35,10 @@ $(document).ready(function(){
               // result = jQuery.parseJSON(result);
              alert(result);
             $(".phone_container").remove();
-                if(result.length == 0){
-                    $("#phones_container").append('<div class = "phone_container"><h1>Not Found!</h1></div>');
-                }
-                else
+//                if(result.length == 0){
+//                    $("#phones_container").append('<div class = "phone_container"><h1>Not Found!</h1></div>');
+//                }
+//                else
             for(i in result){
                 $("#phones_container").append('<div id = "phone_' + result[i].id + '"><p><a href  = "/phones_view/get/'+resut[i].id+'">'+result[i].name+'</a></p><img src = "' + result[i].url + '" alt = ""  id = "content_image"><h3>Виробник: ' + result[i].manufacturer + ' </h3><p>Ціна $: ' + result[i].price + '</p><p>Рейтинг:' + result[i].rate + '</p><button class="btn  deletePhone" value="'+result[i].id+'" data-toggle="modal" data-target="#deleteModal">Видалити</button></div>');
             };
