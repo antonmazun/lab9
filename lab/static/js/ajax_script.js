@@ -40,7 +40,7 @@ $(document).ready(function(){
                 }
                 else
             for(i in result){
-                $("#phones_container").append('<div class = " phone_container" id = "phone_' + result[i].id + '"><img src = "' + result[i].url + '" alt = ""  id = "content_image"><h3>Виробник: ' + result[i].name + ' </h3><p>Ціна $: ' + result[i].price + '</p><p>Рейтинг:' + result[i].rate + '</p></div>');
+                $("#phones_container").append('<div class = " phone_container" id = "phone_' + result[i].id + '"><img src = "' + result[i].url + '" alt = ""  id = "content_image"><h3>Виробник: ' + result[i].manufacturer + ' </h3><p>Ціна $: ' + result[i].price + '</p><p>Рейтинг:' + result[i].rate + '</p></div>');
 
 
  
