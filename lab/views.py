@@ -22,8 +22,7 @@ def show(request):
 
 def phones_view(request):
     result = "OK!"
-    if request.method == "POST" and request.POST['name'] and request.POST['manufacturer'] and request.POST['price'] and
-            request.POST['date'] and request.POST['rate'] and request.FILES['image']:
+    if request.method == "POST" and request.POST['name'] and request.POST['manufacturer'] and request.POST['price'] and request.POST['date'] and request.POST['rate'] and request.FILES['image']:
         if request.user.is_authenticated():
             error = False
             if request.session.get('has_posted_already', False):
