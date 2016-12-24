@@ -109,7 +109,7 @@ def search(request):
         print(search)
         for val in search:
             if flag:
-                newphones = Phone.objects.filter(title__icontains=val)
+                newphones = Phone.objects.filter(name_icontains=val)
                 print(newphones)
                 if newphones:
                     phones = newphones
@@ -117,7 +117,7 @@ def search(request):
                     continue
                 flag = False
             else:
-                newphones = phones & Phone.objects.filter(title__icontains=val)
+                newphones = phones & Phone.objects.filter(name__icontains=val)
                 if newphones:
                     phones = newphones
 
