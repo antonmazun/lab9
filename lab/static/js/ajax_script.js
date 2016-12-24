@@ -31,22 +31,20 @@ $(document).ready(function(){
             url : "/search/",
             data: {search: inp.val(), xhr: true},
             success: function(result){
-                var phones;
-              phones = jQuery.parseJSON(result);
-             alert(phones);
+                var elems;
+             elems = jQuery.parseJSON(result);
+             alert(elems);
             $(".phone_container").remove();
-$('#phones_container').append(Mustache.to_html("{{#phones}} \ 
-                                               
-<div class = 'phone_container' id = 'phone_{{id}}'>\
+$('#phones_container').append(Mustache.render("{{#elems}} \                      <div class = 'phone_container' id = 'phone_{{id}}'>\
 <p><a href  = '/phones_view/get/{{id}}'>{{name}}</a></p>\
 <img src = {{image}} alt = ''  id = 'content_image'>\
 <h3>Виробник:{{manufacturer}}</h3>\
 <p>Ціна $: {{price}}</p>\
 <p>Рейтинг:{{rate}}</p>\
-<button class="btn  deletePhone" value="{{id}}" data-toggle='modal' data-target='#deleteModal'>Видалити</button>\
+<button class='btn  deletePhone' value='{{id}}' data-toggle='modal' data-target='#deleteModal'>Видалити</button>\
                                                </div>\
                                                
-{{/phones}}", { phones: phones })); 
+{{/elems}}", { elems: elems })); 
                 
                 
                 
