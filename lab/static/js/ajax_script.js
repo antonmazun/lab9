@@ -32,7 +32,7 @@ $(document).ready(function(){
             data: {search: inp.val(), xhr: true},
             success: function(result){
                 //var elems;
-             result = jQuery.parseJSON(result);
+            // result = jQuery.parseJSON(result);
              alert(result);
             $(".phone_container").remove();
 $('#phones_container').append(Mustache.render("{{#result}} \
