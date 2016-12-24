@@ -42,7 +42,6 @@ $(document).ready(function(){
             for(i in result){
                 $("#phones_container").append('<div class = "col-sm-4 phone_container" id = "phone_' + result[i].id + '"><div class = "thumbnail"><img src = "' + result[i].url + '" alt = ""  class = "img-responsive" id = "content_image"><div class = "caption"><h3>Виробник: ' + result[i].name + ' </h3><p>Ціна $: ' + result[i].price + '</p><p>Рейтинг:' + result[i].rate + '</p></div></div></div>');
             };
-            readyClickFuncCart();
         }});
     });
 });
