@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^show/$'  ,views.phones_view),
     url(r'^phones_view/get/(\d+)/$', views.phone_view),
    # url(r'^phone_delete/get/(\d+)/$' , views.phone_del),
-    #url(r'^search/', views.search),
+    url(r'^search/', views.search),
     url(r'^interesting/$' , views.interesting),
     url(r'^users/$' , views.view_users),
     url(r'^$', views.show),
