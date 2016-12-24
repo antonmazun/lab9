@@ -35,7 +35,16 @@ $(document).ready(function(){
              result = jQuery.parseJSON(result);
              alert(result);
             $(".phone_container").remove();
-$('#phones_container').append(Mustache.to_html("{{#result}} <div class = 'rt' id = 'phone_{{id}}'><p><a href  = '/phones_view/get/{{id}}'>{{name}}</a></p><img src = {{image}} alt = ''  id = 'content_image'><h3>Виробник:{{manufacturer}}</h3><p>Ціна $: {{price}}</p><p>Рейтинг:{{rate}}</p><button class='btn  deletePhone' value='{{id}}' data-toggle='modal' data-target='#deleteModal'>Видалити</button></div>{{/result}}", { result: result})); 
+$('#phones_container').append(Mustache.to_html("{{#result}} \
+<div class = 'rt' id = 'phone_{{id}}'>\
+<p><a href  = '/phones_view/get/{{id}}'>{{name}}</a></p>\
+<img src = {{image}} alt = ''  id = 'content_image'>\
+<h3>Виробник:{{manufacturer}}</h3>\
+<p>Ціна $: {{price}}</p>\
+<p>Рейтинг:{{rate}}</p>\
+<button class='btn  deletePhone' value='{{id}}' data-toggle='modal' data-target='#deleteModal'>Видалити</button>\
+</div>\
+{{/result}}", { result: result })); 
                 
                 
                 
