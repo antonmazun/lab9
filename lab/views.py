@@ -20,26 +20,34 @@ def show(request):
      return render(request ,"index.html" , {'username' : request.user.username})
 
 
-
 def phones_view(request):
-     result = "OK!"
-     if request.method == "POST" and request.POST['name']  and request.POST['manufacturer'] and request.POST['price'] and request.POST['date'] and request.POST['rate'] and request.FILES['image']:
-         if request.user.is_authenticated():
-
-             print("is_authenticated")
-             form = PhoneForm(request.POST, request.FILES)
-             if form.is_valid():
-                 print("is_valid")
-                 Phone.objects.create(name=request.POST['name'],
-                                      manufacturer=request.POST['manufacturer'],
-                                      price=request.POST['price'],
-                                      rate=request.POST['rate'],
-                                      date=request.POST['date'],
-                                      image=request.FILES['image'])
-             else:
-                 print("Invalid")
-
-         return render(request, "phones.html", { 'result': result, 'user': request.user})
+    result = "OK!"
+    if request.method == "POST" and request.POST['name'] and request.POST['manufacturer'] and request.POST['price'] and
+            request.POST['date'] and request.POST['rate'] and request.FILES['image']:
+        if request.user.is_authenticated():
+            error = False
+            if request.session.get('has_posted_already', False):
+                error = "nizya"
+            else:
+                form = PhoneForm(request.POST, request.FILES)
+                if form.is_valid():
+                    Phone.objects.create(name=request.POST['name'],
+                                         manufacturer=request.POST['manufacturer'],
+                                         price=request.POST['price'],
+                                         rate=request.POST['rate'],
+                                         date=request.POST['date'],
+                                         image=request.FILES['image'])
+                    request.session['has_posted_already'] = True
+            return render(request, "phones.html", {'error': error, 'result': result, 'user': request.user})
+        else:
+            return redirect('/auth/login')
+    elif request.method == "GET":
+        if not Phone.objects:
+            print("empty")
+            return render(request, "phones.html", {'user': request.user})
+        else:
+            print("OK")
+            return render(request, "phones.html", {'phone': Phone.objects.all(), 'user': request.user})
 
      elif request.method == "GET":
          if not Phone.objects:
