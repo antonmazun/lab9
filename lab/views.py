@@ -98,6 +98,7 @@ def phones_view(request):
 
 
 def search(request):
+    empty  ="empty"
     if request.user.is_authenticated():
         username = request.user
     else:
@@ -106,23 +107,25 @@ def search(request):
     flag = True
     print(phones)
     if 'search' in request.GET:
-        search = request.GET['search'].split()
+        search = request.GET['search'].split() # список строк с входного search (по пробелам)
         print(search)
         for val in search:
             if flag:
-                newphones = Phone.objects.filter(title__icontains=val)
-                print(newphones)
-                if newphones:
-                    phones = newphones
+                newphone = Phone.objects.filter(name__icontains=val)
+                print(newphone)
+                if newphone:
+                    phones = newphone
                 else:
                     continue
                 flag = False
+            elif Phone.objects.none():
+                return render_to_response("search.html", {'phones': phones, 'username': username , 'empty':empty})
             else:
-                newphones = phones & Phone.objects.filter(title__icontains=val)
-                if newphones:
-                    phones = newphones
+                newphone = phones & Phone.objects.filter(name__icontains=val)
+                if newphone:
+                    phones = newphone
 
-    return HttpResponse(json.dumps([i.dic() for i in phones]), content_type="application/javascript")
+    return render(request, "search.html", {'phones': phones, 'username': username})
 
 #def phone_del(request, id):
 #     # if request.method == "DELETE":
