@@ -36,10 +36,7 @@ def phones_view(request):
                                       rate=request.POST['rate'],
                                       date=request.POST['date'],
                                       image=request.FILES['image'])
-             else:
-                 print("Invalid")
-
-         return render(request, "phones.html", {'result': result, 'user': request.user})
+             return render(request, "phones.html", {'result': result, 'user': request.user})
 
      elif request.method == "GET":
          if not Phone.objects:
