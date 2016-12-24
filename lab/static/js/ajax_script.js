@@ -40,7 +40,16 @@ $(document).ready(function(){
                 }
                 else
             for(i in result){
-                $("#phones_container").append('<div class = "col-sm-4 phone_container" id = "phone_' + result[i].id + '"><div class = "thumbnail"><img src = "' + result[i].url + '" alt = ""  class = "img-responsive" id = "content_image"><div class = "caption"><h3>Виробник: ' + result[i].name + ' </h3><p>Ціна $: ' + result[i].price + '</p><p>Рейтинг:' + result[i].rate + '</p></div></div></div>');
+                $("#phones_container").append('<div class = " phone_container" id = "phone_' + result[i].id + '"><div class = "thumbnail"><img src = "' + result[i].url + '" alt = ""  class = "img-responsive" id = "content_image"><div class = "caption"><h3>Виробник: ' + result[i].name + ' </h3><p>Ціна $: ' + result[i].price + '</p><p>Рейтинг:' + result[i].rate + '</p></div></div></div>');
+                
+                
+                    
+{%endif%}
+
+
+ 
+           <button class="btn  deletePhone" value="{{i.id}}" data-toggle="modal" data-target="#deleteModal">Видалити</button>
+            </div>
             };
         }});
     });
