@@ -32,7 +32,7 @@ $(document).ready(function(){
             data: {search: inp.val(), xhr: true},
             success: function(result){
 
-               result = jQuery.parseJSON(result);
+              // result = jQuery.parseJSON(result);
              alert(result);
             $(".phone_container").remove();
                 if(result.length == 0){
