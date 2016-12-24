@@ -35,7 +35,7 @@ $(document).ready(function(){
               phones = jQuery.parseJSON(result);
              alert(phones);
             $(".phone_container").remove();
-$('#phones_container').to_html(Mustache.render("{{#phones}} \ 
+$('#phones_container').append(Mustache.to_html("{{#phones}} \ 
                                                
 <div class = 'phone_container' id = 'phone_{{id}}'>\
 <p><a href  = '/phones_view/get/{{id}}'>{{name}}</a></p>\
