@@ -31,18 +31,33 @@ $(document).ready(function(){
             url : "/search/",
             data: {search: inp.val(), xhr: true},
             success: function(result){
-
-              result = jQuery.parseJSON(result);
-             alert(result);
+                var phones;
+              phones = jQuery.parseJSON(result);
+             alert(phones);
             $(".phone_container").remove();
-//                if(result.length == 0){
-//                    $("#phones_container").append('<div class = "phone_container"><h1>Not Found!</h1></div>');
-//                }
-//                else
-                if(result){
+$('#phones_container').to_html(Mustache.render("{{#phones}} \ 
+                                               
+<div class = 'phone_container' id = 'phone_{{id}}'>\
+<p><a href  = '/phones_view/get/{{id}}'>{{name}}</a></p>\
+<img src = {{image}} alt = ''  id = 'content_image'>\
+<h3>Виробник:{{manufacturer}}</h3>\
+<p>Ціна $: {{price}}</p>\
+<p>Рейтинг:{{rate}}</p>\
+<button class="btn  deletePhone" value="{{id}}" data-toggle='modal' data-target='#deleteModal'>Видалити</button>\
+                                               </div>\
+                                               
+{{/phones}}", { phones: phones })); 
+                
+                
+                
+                
+                
+                
+               /* if(result){
+                    
             for(i in result){
                 $("#phones_container").append('<div class = "phone_container" id = "phone_' + result[i].id + '"><p><a href  = "/phones_view/get/'+result[i].id+'">'+result[i].name+'</a></p><img src = "' + result[i].image + '" alt = ""  id = "content_image"><h3>Виробник: ' + result[i].manufacturer + ' </h3><p>Ціна $: ' + result[i].price + '</p><p>Рейтинг:' + result[i].rate + '</p><button class="btn  deletePhone" value="'+result[i].id+'" data-toggle="modal" data-target="#deleteModal">Видалити</button></div>');
-            }};
+            }};*/
         }});
     });
 });
