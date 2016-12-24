@@ -37,6 +37,9 @@ def phones_view(request):
                                       date=request.POST['date'],
                                       image=request.FILES['image'])
              return render(request, "phones.html", {'result': result, 'user': request.user})
+         else:
+             return redirect('/')
+
 
      elif request.method == "GET":
          if not Phone.objects:
@@ -60,6 +63,8 @@ def phones_view(request):
          return HttpResponse(json.dumps({"status": "ok"}), content_type="application/json")
      elif request.method == "POST":
          return redirect('/info/show')
+     else:
+         return redirect('/')
 
          '''
              if form.is_valid():
