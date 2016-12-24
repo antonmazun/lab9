@@ -31,11 +31,11 @@ $(document).ready(function(){
             url : "/search/",
             data: {search: inp.val(), xhr: true},
             success: function(result){
-                var elems;
-             elems = jQuery.parseJSON(result);
-             alert(elems);
+                //var elems;
+             result = jQuery.parseJSON(result);
+             alert(result);
             $(".phone_container").remove();
-$('#phones_container').append(Mustache.render("{{#elems}} \
+$('#phones_container').append(Mustache.render("{{#result}} \
 
 <div class = 'phone_container' id = 'phone_{{id}}'>\
 <p><a href  = '/phones_view/get/{{id}}'>{{name}}</a></p>\
@@ -44,9 +44,9 @@ $('#phones_container').append(Mustache.render("{{#elems}} \
 <p>Ціна $: {{price}}</p>\
 <p>Рейтинг:{{rate}}</p>\
 <button class='btn  deletePhone' value='{{id}}' data-toggle='modal' data-target='#deleteModal'>Видалити</button>\
-                                               </div>\
+</div>\
                                                
-{{/elems}}", { elems: elems })); 
+{{/result}}", { result: result })); 
                 
                 
                 
