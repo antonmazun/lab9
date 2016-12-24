@@ -38,7 +38,7 @@ $(document).ready(function(){
 $('#phones_container').append(Mustache.to_html("{{#result}} \
 <div class = 'phone_container' id = 'phone_{{id}}'>\
 <p><a href  = '/phones_view/get/{{id}}'>{{name}}</a></p>\
-<img src = {{image}} alt = ''  id = 'content_image'>\
+<img style = 'height = 100px; weight = 150px;' src = {{image}} alt = ''  id = 'content_image'>\
 <h3>Виробник:{{manufacturer}}</h3>\
 <p>Ціна $: {{price}}</p>\
 <p>Рейтинг:{{rate}}</p>\
