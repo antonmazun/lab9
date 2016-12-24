@@ -36,7 +36,7 @@ $(document).ready(function(){
              //alert(result);
             $(".phone_container").remove();
 $('#phones_container').append(Mustache.to_html("{{#result}} \
-<div class = 'rt' id = 'phone_{{id}}'>\
+<div class = 'phone_container' id = 'phone_{{id}}'>\
 <p><a href  = '/phones_view/get/{{id}}'>{{name}}</a></p>\
 <img src = {{image}} alt = ''  id = 'content_image'>\
 <h3>Виробник:{{manufacturer}}</h3>\
