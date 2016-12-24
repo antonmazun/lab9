@@ -56,8 +56,9 @@
 {%endif%}
 {%if phone %}
     <div id = "phones_container">
+        <div class = "class = "phone_container"">
 {% for i in phone %}
-    <div id="phone_{{i.id}}" class = "phone_container">
+    <div id="phone_{{i.id}}" >
      <p><a href  = "/phones_view/get/{{i.id}}">{{i.name}}</a></p>
      <p>Виробник $:{{i.manufacturer}}</p>
     <p>Ціна $:{{i.price}}</p>
@@ -73,6 +74,7 @@
            <button class="btn  deletePhone" value="{{i.id}}" data-toggle="modal" data-target="#deleteModal">Видалити</button>
             </div>
       {%endfor%}
+    </div>
     </div>
 <div class="modal fade" id="deleteModal" role="dialog">
         <div class="modal-dialog" style="width:30%">
