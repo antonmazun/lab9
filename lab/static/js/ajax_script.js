@@ -33,7 +33,7 @@ $(document).ready(function(){
             success: function(result){
 
                result = jQuery.parseJSON(result);
-            // alert(result);
+             alert(result);
             $(".phone_container").remove();
                 if(result.length == 0){
                     $("#phones_container").append('<div class = "phone_container"><h1>Not Found!</h1></div>');
