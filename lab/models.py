@@ -16,5 +16,5 @@ class Phone(models.Model):
                 'manufacturer': self.manufacturer ,
                 'price':self.price ,
                 'rate' : self.rate,
-                'image' :self.image.url,}
+                'image' :self.image.url}
 
