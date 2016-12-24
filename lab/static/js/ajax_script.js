@@ -42,7 +42,6 @@ $('#phones_container').append(Mustache.to_html("{{#result}} \
 <h3>Виробник:{{manufacturer}}</h3>\
 <p>Ціна $: {{price}}</p>\
 <p>Рейтинг:{{rate}}</p>\
-<button class='btn  deletePhone' value='{{id}}' data-toggle='modal' data-target='#deleteModal'>Видалити</button>\
 </div>\
 {{/result}}", { result: result })); 
                 
